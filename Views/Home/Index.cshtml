@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<asm.Models.Book>
+
+
+<h1>BookStore</h1>
+
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+</style>
+
+
+
+<form asp-controller="Home" asp-action="Index" method="get">
+    <input type="text" name="searchString" placeholder="Search by book title" />
+    <button type="submit">Search</button>
+</form>
+
+<form asp-controller="Home" asp-action="Index" method="post">
+
+    <select name="category" id="category">
+        <option value="">All Categories</option>
+        @foreach (var category in ViewBag.Categories)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<div class="row">
+    @foreach (var item in ViewBag.Book)
+    {
+        <div class="card col-md-3 m-4">
+            <h4>@item.Title</h4>
+            <p>
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="/images/@item.Picture"
+                         class="w-100" />
+                </a>
+            </p>
+            <p style="text-align: center;">
+                <h5>Price: @item.Price</h5>
+            </p>
+            <p>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="AddCart" asp-route-id="@item.Id">Add to cart</a>
+            </p>
+        </div>
+    }
+
+</div>
