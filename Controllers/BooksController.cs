@@ -23,7 +23,6 @@ namespace asm.Controllers
             this.webHostEnvironment = webHostEnvironment;
         }
 
-        // GET: ProductsAdmin
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _db.Book.Include(b => b.Category);
