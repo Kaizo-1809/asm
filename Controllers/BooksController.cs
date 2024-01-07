@@ -47,7 +47,6 @@ namespace asm.Controllers
         }
 
         [Authorize(Roles = "ADMIN")]
-        // GET: ProductsAdmin/Create
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_db.Category, "Id", "Name");
