@@ -29,7 +29,6 @@ namespace asm.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: ProductsAdmin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _db.Book == null)
