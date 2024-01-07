@@ -20,7 +20,6 @@ namespace asm.Controllers
             _context = context;
         }
 
-        // GET: Categories
         public async Task<IActionResult> Index()
         {
               return _context.Category != null ? 
@@ -28,7 +27,6 @@ namespace asm.Controllers
                           Problem("Entity set 'ApplicationDbContext.Category'  is null.");
         }
 
-        // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Category == null)
@@ -46,15 +44,11 @@ namespace asm.Controllers
             return View(category);
         }
         [Authorize(Roles = "ADMIN")]
-        // GET: Categories/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
@@ -68,7 +62,6 @@ namespace asm.Controllers
             return View(category);
         }
         [Authorize(Roles = "ADMIN")]
-        // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Category == null)
@@ -84,9 +77,6 @@ namespace asm.Controllers
             return View(category);
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
@@ -119,7 +109,6 @@ namespace asm.Controllers
             return View(category);
         }
         [Authorize(Roles = "ADMIN")]
-        // GET: Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Category == null)
@@ -137,7 +126,6 @@ namespace asm.Controllers
             return View(category);
         }
 
-        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
