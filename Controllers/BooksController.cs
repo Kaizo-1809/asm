@@ -80,7 +80,6 @@ namespace asm.Controllers
         }
 
         [Authorize(Roles = "ADMIN")]
-        // GET: ProductsAdmin/Edit/5
         public IActionResult Edit(int id)
         {
             var book = _db.Book.Find(id);
