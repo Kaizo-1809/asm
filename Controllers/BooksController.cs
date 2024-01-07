@@ -37,7 +37,6 @@ namespace asm.Controllers
             }
 
             var book = await _db.Book
-                //.Include(b => b.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (book == null)
             {
