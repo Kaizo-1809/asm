@@ -148,7 +148,6 @@ namespace asm.Controllers
         }
 
         [Authorize(Roles = "ADMIN")]
-        // GET: ProductsAdmin/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
             var book = await _db.Book.FindAsync(id);
@@ -172,8 +171,6 @@ namespace asm.Controllers
                 {
                     return NotFound();
                 }
-
-                // Delete the profile picture file if it exists
                 if (!string.IsNullOrEmpty(book.Picture))
                 {
                     var imagePath = Path.Combine(webHostEnvironment.WebRootPath, "images", book.Picture);
@@ -182,7 +179,6 @@ namespace asm.Controllers
                         System.IO.File.Delete(imagePath);
                     }
                 }
-
                 _db.Book.Remove(book);
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
